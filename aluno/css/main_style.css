@@ -1,0 +1,130 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+/* ==|== Estilos Principais ================================================== */
+.content{
+    width:100%;
+    float:left;
+    min-height: 150px;
+}
+.container {
+    max-width:1140px;
+    margin: 0 auto;
+    padding:0em;
+}
+
+.header li{
+    float:left;
+    width:25%;
+    text-align:center;
+    height:3em;
+    display:block;
+} 
+
+.header li a  {
+    color:#666;
+    display:block;
+    text-transform:uppercase;
+    font-size:1.4em;
+    text-decoration:none;
+}
+
+.titulos{
+    color:#ed3237;
+    font-size:1em;
+    margin:2em 0 0em 0.4em;
+    text-transform: uppercase;
+}
+
+/*footer*/
+.footer {
+    width: 100%;
+    margin-top: 1em;
+    float: left;
+    clear: both;
+    text-align:center;
+}
+.footer a {
+    font-size: 1em;
+    text-transform:uppercase;
+    margin:20px;
+    text-decoration: none;
+}
+
+/*rodape_nn*/
+.footer .rodape {
+    width:100%;
+}
+
+.footer p{
+    color:#fff;
+    text-align:center;
+    margin:20px 0px 0px 0px;
+    width:100%;
+    float:left;
+}
+.atual{
+    color: red;
+    border:#ed3237 thin solid;  
+}
+.footer p span{
+    white-space: nowrap;
+}
+.footer address span{
+    white-space: nowrap;
+}
+.footer address {
+    color:#fff;
+    margin:5px 0px 0px 0px;
+    padding: 0em 0em 1em 0em;
+    width:100%;
+    clear:both;
+}
+
+
+form  {
+    display: block;
+    height: 200px;
+    width: 400px;
+    margin: 30px auto 30px auto;
+
+}
+form fieldset {
+    height: 100px;
+    width: 400px;
+    padding: 20px;
+}
+
+form input {
+    margin: 5px  0px ;
+}
+.aviso {
+    color:red;
+    text-align: center;
+    width:100%;
+    display: block;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+@media screen and (max-width: 960px) {
+    .container {
+        max-width:960px;
+    }
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; 
+    display: table; 
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+
