@@ -11,9 +11,9 @@
         $acao = filter_input(INPUT_GET, "acao") ? filter_input(INPUT_GET, "acao") : NULL;
         $nome = filter_input(INPUT_POST, "nome") ? filter_input(INPUT_POST, "nome") : NULL;
         $nota = filter_input(INPUT_POST, "nota") ? filter_input(INPUT_POST, "nota") : NULL;
-        require_once '../interface/Entidade.interface.php';
-        require_once '../classes/ServiceDb.class.php';
-        require_once '../classes/Aluno.class.php';
+        require_once 'interface/Entidade.interface.php';
+        require_once 'classes/ServiceDb.class.php';
+        require_once 'classes/Aluno.class.php';
         require_once "conexao.php";
         $pdo = Conectar();
         $aluno = new Aluno();

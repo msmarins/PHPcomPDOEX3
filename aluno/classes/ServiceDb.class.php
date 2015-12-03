@@ -11,11 +11,8 @@ class ServiceDb {
     private $entity;
 
     public function __construct(\PDO $db, EntidadeInterface $entity) {
-        // public function __construct(\PDO $db) {
-
         $this->db = $db;
         $this->entity = $entity;
-        //$this->entity = "alunos";
     }
 
     public function Find($id) {

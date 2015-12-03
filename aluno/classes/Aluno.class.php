@@ -5,7 +5,7 @@
  * Decricao     
  * @copyright (c) year, Marcio Marins Marins Produções
  */
-require_once '../interface/Entidade.interface.php';
+require_once 'interface/Entidade.interface.php';
 
 class Aluno implements EntidadeInterface {
 

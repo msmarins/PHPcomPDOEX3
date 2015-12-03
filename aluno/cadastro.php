@@ -7,9 +7,10 @@
     </head>
     <body>
         <?php
-        require_once '../interface/Entidade.interface.php';
-        require_once '../classes/Aluno.class.php';
-        require_once '../classes/ServiceDb.class.php';
+        require_once 'interface/Entidade.interface.php';
+        require_once 'classes/Aluno.class.php';
+        require_once 'classes/ServiceDb.class.php';
+        require_once 'classes/ServiceDb.class.php';
         require_once "conexao.php";
         $pdo = Conectar();
         $aluno = new Aluno();
