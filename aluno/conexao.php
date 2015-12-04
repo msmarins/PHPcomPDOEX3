@@ -5,7 +5,7 @@ function Conectar() {
     $host = "localhost";
     $user = "root";
     $pass = "";
-    $dbname = "pdo";
+    $dbname = "pdo";//banco de dados criano no primeiro ex
     try {
         //tenta fazer conexao com o banco de dados
         $pdo = new \PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
