@@ -2,6 +2,7 @@
 <?php
 
 function Conectar() {
+    $pdo = "";
     $host = "localhost";
     $user = "root";
     $pass = "";
@@ -13,3 +14,5 @@ function Conectar() {
     }
     return $pdo;
 }
+
+

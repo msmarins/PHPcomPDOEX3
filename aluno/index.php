@@ -1,3 +1,9 @@
+<?php
+session_start();
+if ($_SESSION["login"] == "") {
+    header("location:admin.php?aviso=2");
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -9,8 +15,8 @@
         <div class="container clearfix">
             <?php include_once 'header.php'; ?>
             <section class="content">
+                <h2>Seja bem-vindo <?php echo $_SESSION['login']; ?></h2><br />
                 <?php
-                require_once 'interface/Entidade.interface.php';
                 require_once 'classes/Aluno.class.php';
                 require_once 'classes/ServiceDb.class.php';
                 require_once "conexao.php";
@@ -20,15 +26,21 @@
                 if (filter_input(INPUT_GET, "sessao")):
                     $pg = filter_input(INPUT_GET, "sessao");
                     switch ($pg) {
-                        case "1":
+                        case 1:
                             include "home.php";
                             break;
-                        case "2":
+                        case 2:
                             $processo->Deletar(filter_input(INPUT_GET, "id"));
                             header("location:index.php");
                             break;
 
-                        case "4":
+                        case 3:
+                            include "cadastro.php";
+                            break;
+                        case 4:
+                            include "cadastro.php";
+                            break;
+                        case 5:
                             include "cadastro.php";
                             break;
                     }

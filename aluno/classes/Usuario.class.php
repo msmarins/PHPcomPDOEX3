@@ -7,12 +7,13 @@
  */
 require_once 'interface/Entidade.interface.php';
 
-class Aluno implements EntidadeInterface {
+class Usuario implements EntidadeInterface {
 
     private $id;
-    private $table = "alunos";
-    private $nome;
-    private $nota;
+    private $table = "usuarios";
+    private $login;
+    private $senha;
+    private $dados;
     private $termos;
 
     function getTermos() {
@@ -31,12 +32,12 @@ class Aluno implements EntidadeInterface {
         return $this->table;
     }
 
-    function getNome() {
-        return $this->nome;
+    function getLogin() {
+        return $this->login;
     }
 
-    function getNota() {
-        return $this->nota;
+    function getSenha() {
+        return $this->senha;
     }
 
     function getDados() {
@@ -47,20 +48,20 @@ class Aluno implements EntidadeInterface {
         $this->id = $id;
     }
 
-    function setTable($table) {
-        $this->table = $table;
+    function setLogin($login) {
+        $this->login = $login;
     }
 
-    function setNome($nome) {
-        $this->nome = $nome;
-    }
-
-    function setNota($nota) {
-        $this->nota = $nota;
+    function setSenha($senha) {
+        $this->senha = $senha;
     }
 
     function setDados($dados) {
         $this->dados = $dados;
+    }
+
+    function setTable($table) {
+        $this->table = $table;
     }
 
 }

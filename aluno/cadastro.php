@@ -16,32 +16,46 @@
         $aluno = new Aluno();
         $processo = new ServiceDb($pdo, $aluno);
 
-        $acao = filter_input(INPUT_GET, "acao") ? filter_input(INPUT_GET, "acao") : NULL;
+        $sessao = filter_input(INPUT_GET, "sessao") ? filter_input(INPUT_GET, "sessao") : NULL;
 
-        switch ($acao) {
-            case "editar":
+        switch ($sessao) {
+            case 5:
                 $id = filter_input(INPUT_GET, "id") ? filter_input(INPUT_GET, "id") : NULL;
                 $ident = "&id=" . $id;
-                $nome = $processo->Find($id)["nome"];
-                $nota = $processo->Find($id)["nota"];
-                $bt = "EDITAR";
+                $campo1 = "value = '" . $processo->Find($id)["nome"] . "' name = 'nome' id = 'nome'";
+                $campo2 = "value = '" . $processo->Find($id)["nota"] . "' name = 'nota' id = 'nota'";
+                $lb1 = "nome";
+                $lb2 = "nota";
+                $bt = "EDITAR ALUNO";
+                $acao = "editar";
                 break;
-            case NULL:
-                $bt = "CADASTRAR";
+            case 3:
                 $ident = "";
-                $nome = "";
-                $nota = "";
-                $acao = "cadastrar";
+                $campo1 = "value = '' name = 'nome' id = 'nome'";
+                $campo2 = "value = '' name = 'nota' id = 'nota'";
+                $lb1 = "nome";
+                $lb2 = "nota";
+                $bt = "CADASTRAR ALUNO ";
+                $acao = "cad_aluno";
+                break;
+            case 4:
+                $ident = "";
+                $campo1 = "value = \"\" name = 'login' id = 'login'";
+                $campo2 = "value = \"\" name = 'senha' id = 'senha'";
+                $lb1 = "login";
+                $lb2 = "senha";
+                $bt = "CADASTRAR USUÁRIO ";
+                $acao = "cad_user";
                 break;
         }
         ?>
-        <form method="post" action="executar.php?acao=<?php echo $acao . $ident ?>">
+        <form method="post" action="executar.php?acao=<?php echo $acao.$ident ?>">
             <fieldset>
-                <legend><?php echo $bt; ?> ALUNO</legend>
-                <label for="nome">NOME</label>
-                <input type="text" value="<?php echo $nome; ?>" name="nome" id="nome" size="30"/><br />
-                <label for="nota">NOTA</label>
-                <input type="text" value="<?php echo $nota; ?>" name="nota" id="nota" size="30"/><br />
+                <legend><?php echo $bt; ?></legend>
+                <label for="<?php echo $lb1; ?>"><?php echo $lb1; ?></label>
+                <input type="text" <?php echo $campo1; ?> size="30"/><br />
+                <label for="<?php echo $lb2; ?>"><?php echo $lb2; ?></label>
+                <input type="text" <?php echo $campo2; ?> size="30"/><br />
                 <input type="submit" value="Enviar"/>
             </fieldset>
         </form>
