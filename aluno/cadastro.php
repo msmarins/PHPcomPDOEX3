@@ -1,3 +1,9 @@
+<?php
+session_start();
+if ($_SESSION["login"] == "") {
+    header("location:sessoes/admin.php?aviso=2");
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -13,13 +19,13 @@
         require_once 'classes/ServiceDb.class.php';
         require_once "conexao.php";
         $pdo = Conectar();
-        $aluno = new Aluno();
-        $processo = new ServiceDb($pdo, $aluno);
 
         $sessao = filter_input(INPUT_GET, "sessao") ? filter_input(INPUT_GET, "sessao") : NULL;
 
         switch ($sessao) {
             case 5:
+                $aluno = new Aluno();
+                $processo = new ServiceDb($pdo, $aluno);
                 $id = filter_input(INPUT_GET, "id") ? filter_input(INPUT_GET, "id") : NULL;
                 $ident = "&id=" . $id;
                 $campo1 = "value = '" . $processo->Find($id)["nome"] . "' name = 'nome' id = 'nome'";
@@ -47,9 +53,21 @@
                 $bt = "CADASTRAR USUÁRIO ";
                 $acao = "cad_user";
                 break;
+            case 7:
+                $usuario = new Usuario();
+                $processo = new ServiceDb($pdo, $usuario);
+                $id = filter_input(INPUT_GET, "id") ? filter_input(INPUT_GET, "id") : NULL;
+                $ident = "&id=" . $id;
+                $campo1 = "value = '" . $processo->Find($id)["login"] . "' name = 'login' id = 'login'";
+                $campo2 = "value = '" . $processo->Find($id)["senha"] . "' name = 'senha' id = 'senha'";
+                $lb1 = "login";
+                $lb2 = "senha";
+                $bt = "EDITAR USUÁRIO";
+                $acao = "editar";
+                break;
         }
         ?>
-        <form method="post" action="executar.php?acao=<?php echo $acao.$ident ?>">
+        <form method="post" action="executar.php?acao=<?php echo $acao . $ident ?>">
             <fieldset>
                 <legend><?php echo $bt; ?></legend>
                 <label for="<?php echo $lb1; ?>"><?php echo $lb1; ?></label>

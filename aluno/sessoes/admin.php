@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <link rel="stylesheet" href="css/main_style.css" />
+        <link rel="stylesheet" href="../css/main_style.css" />
     </head>
     <body>
         <div class="container clearfix">
@@ -21,7 +21,7 @@
                 }
                 ?>
             </span>
-            <form method="post" action="autenticar.php">
+            <form method="post" action="../autenticar.php">
                 <fieldset>
                     <legend>Digite seu login e senha para logar no sistema</legend>
                     <label for="login">Login</label>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SESSION["login"] == "") {
-    header("location:admin.php?aviso=2");
+    header("location:sessoes/admin.php?aviso=2");
 }
 ?>
 <!DOCTYPE html>
@@ -17,35 +17,23 @@ if ($_SESSION["login"] == "") {
             <section class="content">
                 <h2>Seja bem-vindo <?php echo $_SESSION['login']; ?></h2><br />
                 <?php
-                require_once 'classes/Aluno.class.php';
-                require_once 'classes/ServiceDb.class.php';
-                require_once "conexao.php";
-                $pdo = Conectar();
-                $aluno = new Aluno();
-                $processo = new ServiceDb($pdo, $aluno);
-                if (filter_input(INPUT_GET, "sessao")):
-                    $pg = filter_input(INPUT_GET, "sessao");
+                if (filter_input(INPUT_GET, "sessao")):$pg = filter_input(INPUT_GET, "sessao");
                     switch ($pg) {
                         case 1:
-                            include "home.php";
+                            include "sessoes/alunos.php";
                             break;
                         case 2:
-                            $processo->Deletar(filter_input(INPUT_GET, "id"));
-                            header("location:index.php");
+                            include "sessoes/usuarios.php";
                             break;
-
                         case 3:
-                            include "cadastro.php";
+                            include "formularios/form_aluno.php";
                             break;
                         case 4:
-                            include "cadastro.php";
-                            break;
-                        case 5:
-                            include "cadastro.php";
+                            include "formularios/form_usuario.php";
                             break;
                     }
                 else:
-                    include 'home.php';
+                    include 'sessoes/alunos.php';
                     $pg = "";
                 endif;
                 ?>

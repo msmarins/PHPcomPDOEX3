@@ -15,6 +15,21 @@ class ServiceDb {
         $this->entity = $entity;
     }
 
+    public function Find($atributos , $valor) {
+        $array_atributos = explode("=", $atributos);
+        $reg = $array_atributos[1];
+        $query = "SELECT * FROM {$this->entity->getTable()} WHERE {$atributos}";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue($reg , $valor);
+        $stmt->execute();
+        if($stmt->rowCount()<=0){
+            echo  "Este aluno não existe";
+        }
+        else {
+            return $stmt->fetch(\PDO :: FETCH_ASSOC); // o fetch não aceita FETCH_CLASS   
+        }
+    }
+    /*
     public function Find($id) {
         $query = "SELECT * FROM {$this->entity->getTable()} WHERE id = :id";
         $stmt = $this->db->prepare($query);
@@ -22,7 +37,7 @@ class ServiceDb {
         $stmt->execute();
         return $stmt->fetch(\PDO :: FETCH_ASSOC); // o fetch não aceita FETCH_CLASS 
     }
-
+*/
     //alterado pel otutor
     public function Listar($order = null) {
         if ($order) {
